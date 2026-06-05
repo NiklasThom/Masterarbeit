@@ -1,0 +1,71 @@
+saving_dir: results/ag_news_test
+experiment_name: ag_news_mclmc_medium
+
+data:
+  path: ag_news
+  source: huggingface
+  data_type: text
+  task: class
+  target_column: label
+  target_len: 1
+  features:
+  - text
+  datapoint_limit: 5000
+  normalize: false
+  train_split: 0.7
+  valid_split: 0.1
+  test_split: 0.2
+
+model:
+  model: AttentionClassifier
+  vocab_size: 1000
+  context_len: 70
+  emb_size: 48
+  n_blocks: 1
+  n_heads: 8
+  qkv_dim: 64
+  bias: false
+  dropout: 0.1
+  dtype: float32
+  n_classes: 4
+  projection_dim:
+  - 32
+
+training:
+  warmstart:
+    include: true
+    optimizer_config:
+      name: adamw
+      parameters:
+        learning_rate: 0.001
+    warmstart_exp_dir: null
+    max_epochs: 30
+    batch_size: 32
+    patience: 7
+  sampler:
+    name: mclmc
+    epoch_wise_sampling: false
+    params_frozen: []
+    warmup_steps: 1000
+    n_chains: 2
+    n_samples: 1024
+    use_warmup_as_init: true
+    n_thinning: 2
+    diagonal_preconditioning: false
+    desired_energy_var_start: 0.5
+    desired_energy_var_end: 0.1
+    trust_in_estimate: 1.5
+    num_effective_samples: 100
+    step_size_init: 0.001
+    keep_warmup: false
+    prior_config:
+      name: Normal
+      parameters:
+        loc: 0.0
+        scale: 0.2
+  tokenizer:
+    tokenizer: CustomBPE
+    parameters: {}
+
+rng: 123
+logging: true

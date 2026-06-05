@@ -45,7 +45,7 @@ training:
     params_frozen: []
     warmup_steps: 500
     n_chains: 2
-    n_samples: 500
+    n_samples: 512
     use_warmup_as_init: true
     n_thinning: 2
     diagonal_preconditioning: false

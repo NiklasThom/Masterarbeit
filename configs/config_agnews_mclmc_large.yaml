@@ -1,5 +1,5 @@
 saving_dir: results/ag_news_test
-experiment_name: ag_news_mclmc_large_gpu
+experiment_name: ag_news_mclmc_large
 
 data:
   path: ag_news
@@ -10,7 +10,7 @@ data:
   target_len: 1
   features:
     - text
-  datapoint_limit: 10000
+  datapoint_limit: 3000
   normalize: false
   train_split: 0.7
   valid_split: 0.1
@@ -19,7 +19,7 @@ data:
 model:
   model: AttentionClassifier
   vocab_size: 1000
-  context_len: 70
+  context_len: 60
   emb_size: 48
   n_blocks: 1
   n_heads: 8
@@ -40,7 +40,7 @@ training:
         learning_rate: 0.001
     warmstart_exp_dir: null
     max_epochs: 40
-    batch_size: 64
+    batch_size: 32
     patience: 10
 
   sampler:
@@ -49,7 +49,7 @@ training:
     params_frozen: []
     warmup_steps: 1000
     n_chains: 2
-    n_samples: 2048
+    n_samples: 1024
     use_warmup_as_init: true
     n_thinning: 2
     diagonal_preconditioning: false
@@ -59,7 +59,6 @@ training:
     num_effective_samples: 100
     step_size_init: 0.001
     keep_warmup: false
-
     prior_config:
       name: Normal
       parameters:

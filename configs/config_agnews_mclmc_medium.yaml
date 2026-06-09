@@ -9,8 +9,8 @@ data:
   target_column: label
   target_len: 1
   features:
-  - text
-  datapoint_limit: 5000
+    - text
+  datapoint_limit: 2000
   normalize: false
   train_split: 0.7
   valid_split: 0.1
@@ -29,7 +29,7 @@ model:
   dtype: float32
   n_classes: 4
   projection_dim:
-  - 32
+    - 32
 
 training:
   warmstart:
@@ -42,13 +42,14 @@ training:
     max_epochs: 30
     batch_size: 32
     patience: 7
+
   sampler:
     name: mclmc
     epoch_wise_sampling: false
     params_frozen: []
-    warmup_steps: 1000
+    warmup_steps: 750
     n_chains: 2
-    n_samples: 1024
+    n_samples: 768
     use_warmup_as_init: true
     n_thinning: 2
     diagonal_preconditioning: false
@@ -63,6 +64,7 @@ training:
       parameters:
         loc: 0.0
         scale: 0.2
+
   tokenizer:
     tokenizer: CustomBPE
     parameters: {}

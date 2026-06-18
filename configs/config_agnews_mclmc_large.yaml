@@ -19,7 +19,7 @@ data:
 model:
   model: AttentionClassifier
   vocab_size: 1000
-  context_len: 60
+  context_len: 70
   emb_size: 48
   n_blocks: 1
   n_heads: 8

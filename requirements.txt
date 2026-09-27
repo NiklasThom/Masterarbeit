@@ -1,0 +1,47 @@
+# Mirrors the pinned dependencies from bayes_sub_inf's pyproject.toml
+# (https://github.com/NiklasThom/bayes_sub_inf, forked from doldd/bayes_sub_inf).
+# THIS FILE IS A CONVENIENCE REFERENCE, NOT THE AUTHORITATIVE SOURCE.
+# The environment actually used for all thesis experiments is managed via
+# `uv sync --extra viz` inside a clone of bayes_sub_inf, which also resolves
+# transitive dependencies via uv.lock. Prefer that route; use this file only
+# if you specifically need a plain-pip environment.
+#
+# Requires Python >=3.10,<3.12
+
+# --- Core (bayes_sub_inf [project.dependencies]) ---
+flax>=0.10.0,<0.11.0
+jax[cuda12]==0.5.3
+jaxlib==0.5.3
+optax>=0.2.0,<0.3.0
+jaxopt>=0.8.5,<0.9.0
+jax-tqdm>=0.2.2,<0.3.0
+einshape>=1.0,<2.0
+scipy>=1.10.0,<2.0.0
+wandb>=0.17.8,<0.18.0
+datasets==2.21.0
+transformers==4.44.2
+huggingface-hub==0.24.7
+accelerate==0.33.0
+sentencepiece>=0.2.1
+safetensors>=0.8.0
+tokenizers>=0.19.1
+einops>=0.8.2
+blackjax==1.2.2
+
+# --- Viz extra (bayes_sub_inf [project.optional-dependencies.viz]) ---
+# Needed to run/inspect notebooks with plots (used across the MILE/MFVI/
+# Laplace/Deep Ensemble notebooks in this repo).
+ipywidgets>=8.1.3,<9.0.0
+widgetsnbextension>=4.0.11,<5.0.0
+seaborn>=0.13.2,<0.14.0
+pandas>=2.2.2,<3.0.0
+arviz>=0.18.0,<0.19.0
+matplotlib>=3.9.0,<4.0.0
+notebook>=7.2.1,<8.0.0
+jupyter
+nbconvert
+
+# --- Dev (optional, only needed to run bayes_sub_inf's own test suite) ---
+# pytest>=9.0.2,<10.0.0
+# ipykernel>=6.29.5,<7.0.0
+# pre-commit>=3.5.0

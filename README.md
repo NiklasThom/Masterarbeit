@@ -36,7 +36,7 @@ against a deterministic point-estimate baseline, evaluated on predictive perform
 | `05_deep_ensemble/` | Deep Ensemble training/metrics |
 | `06_evaluation/` | Combined evaluation, far-/near-OOD detection |
 
-A few legacy notebooks from earlier iterations of the pipeline (e.g. `02_methods_v3_2.ipynb`, `02_mile_warmup_extended.ipynb`, `Evaluation.ipynb`) still sit at the top level of `notebooks/` pending cleanup — they document intermediate diagnostic steps (e.g. the MILE chain-instability investigation at $N_{\text{PER\_CLASS}}=512$ described in the thesis) but are not required to reproduce the final reported numbers.
+A few legacy notebooks from earlier iterations of the pipeline (e.g. `02_methods_v3_2.ipynb`, `02_mile_warmup_extended.ipynb`, `Evaluation.ipynb`) still sit at the top level of `notebooks/` pending cleanup — they document intermediate diagnostic steps (e.g. the MILE chain-instability investigation at `N_PER_CLASS=512` described in the thesis) but are not required to reproduce the final reported numbers.
 
 ## Dependencies
 
@@ -97,7 +97,7 @@ This uses a `max_seq_len=128` tokenization for AG News (confirmed directly in th
 
 | Thesis item | Source |
 |---|---|
-| Table 4 / 8 — MILE ($N_{\text{PER\_CLASS}}=2048$, $K=3$, repaired) | `02_mile/` multi-chain run + chain-1 repair, final pooled evaluation |
+| Table 4 / 8 — MILE (`N_PER_CLASS=2048`, `K=3`, repaired) | `02_mile/` multi-chain run + chain-1 repair, final pooled evaluation |
 | Table 4 / 8 — pSMILE | `02_mile/SMILE/02_mile_psmile_prod_step1e-4.ipynb` |
 | Table 4 / 8 — MFVI | `03_mfvi/03_mfvi.ipynb` |
 | Table 4 / 8 — Laplace | `04_laplace/04_laplace.ipynb` |
